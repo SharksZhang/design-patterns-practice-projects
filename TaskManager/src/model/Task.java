@@ -1,6 +1,6 @@
 package model;
 
-public class Task {
+public class Task extends Doable{
 
     private String description;
     private String date;
@@ -32,6 +32,7 @@ public class Task {
             status = true;
         }
     }
+
 
     public void display(String indentSpace) {
         System.out.println(indentSpace + this.getDescription());
