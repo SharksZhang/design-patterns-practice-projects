@@ -8,7 +8,6 @@ public class Todo extends Doable{
 
     private String description;
     private List<Doable> subs;
-
     private boolean complete;
 
 
@@ -24,12 +23,12 @@ public class Todo extends Doable{
     // getters
     public boolean getStatus() { return complete; }
 
-    public List<Doable> getSubs() {
+    public List<Doable> getSubTasks() {
         return subs;
     }
 
 
-    public boolean addDoable(Todo td) {
+    public boolean addDoable(Doable td) {
         if (!subs.contains(td)) {
             subs.add(td);
             return true;
@@ -38,7 +37,7 @@ public class Todo extends Doable{
         }
     }
 
-    public boolean removeDoables(Task t) {
+    public boolean removeDoable(Task t) {
         if (subs.contains(t)) {
             subs.remove(t);
             return true;
@@ -57,7 +56,7 @@ public class Todo extends Doable{
     public void complete() {
         boolean aresubsComplete = true;
         for(Doable d: subs){
-            if(! d.complete){
+            if(! d.getStatus()){
                 aresubsComplete = false;
             }
         }
@@ -68,7 +67,7 @@ public class Todo extends Doable{
     public void display(String indentSpace) {
         System.out.println(indentSpace + getDescription());
         for (Doable d : subs){
-            d.display(indentSpace+ "  ");
+            d.display(indentSpace+ indentSpace);
         }
 
     }
